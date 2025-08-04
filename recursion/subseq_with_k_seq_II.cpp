@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+   bool countSubsequenceWithTargetSum(int i,vector<int>&ds,int sum,vector<int>& nums, int k,int n){
+    	if(i==n){
+            if(sum==k){
+      for(auto it: ds){
+        cout<<it<<" ";
+      }
+
+      cout<<endl;
+      return true;
+            }
+   else  return false;
+        }
+        ds.push_back(nums[i]); // pick
+        sum+=nums[i];
+       if( countSubsequenceWithTargetSum(i+1,ds,sum,nums,k,n)==true){
+        return true;
+       }
+        ds.pop_back(); // not pick
+        sum-=nums[i];
+        if( countSubsequenceWithTargetSum(i+1,ds,sum,nums,k,n)==true){
+            return true;
+        }
+        return false;
+    }
+int main(){
+     int n;
+        cout<<"Enter the dimension : ";
+        cin>>n;
+        vector<int>nums(n);
+        cout<<"Enter the elements of the array : ";
+        for(int i=0;i<n;i++){
+            cin>>nums[i];
+        }
+        int target;
+        cout<<"Enter the target : ";
+        cin>>target;
+        vector<int>ds;
+       countSubsequenceWithTargetSum(0,ds,0,nums,target,n);
+      
+}
