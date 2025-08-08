@@ -6,12 +6,18 @@ void swap(int *a,int *b){
     *b=temp;
 }
 void bubble_sort(vector<int>&arr){
+    int swapno=0;
     int n=arr.size();
     for(int i=n-1;i>=1;i--){
         for(int j=0;j<=i-1;j++){
             if(arr[j]>arr[j+1]){
                 swap(&arr[j],&arr[j+1]);
+                swapno=1;
             }
+        }
+        // best case
+        if(swapno==0){
+            break;
         }
     }
    
