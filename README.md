@@ -7,6 +7,7 @@ This repository contains my solutions to various Data Structures and Algorithms 
 - Recursion, Backtracking
 - Dynamic Programming
 - Sorting
+- Bit-Manupulation
 
 ###  Structure
 Solutions are organized by topic in separate folders. Each file is well-commented for clarity.
