@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+using namespace std;
+void sieve_of_Eratosthenes(vector<int> & prime){
+    int n=prime.size();
+    for(int i=2;i*i<n;i++){
+        if(prime[i]==1){
+            for(int j=i*i;j<n;j+=i){
+                prime[j]=0;
+            }
+        }
+    }
+    
+}
+int main(){
+    int n;
+    cout<<"enter n : ";
+    cin>>n;
+    vector<int>prime(n+1,1);
+    sieve_of_Eratosthenes(prime);
+    cout<<"Prime numbers in b/w 1 and "<<n<<": \n";
+    for(int i=2;i<prime.size();i++){
+        if(prime[i]==1){
+            cout<<i<<" ";
+        }
+    }
+}
