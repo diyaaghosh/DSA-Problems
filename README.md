@@ -1,6 +1,6 @@
 # DSA Problems 
 
-This repository contains my solutions to various Data Structures and Algorithms (DSA) problems in **C++**.
+This repository contains my solutions to various Data Structures and Algorithms (DSA) problems in **C++**(mainly) , **Java** , **Python**.
 
 ###  Topics Covered
 - Linked Lists
