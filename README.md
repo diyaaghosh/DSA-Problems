@@ -12,6 +12,7 @@ This repository contains my solutions to various Data Structures and Algorithms 
 - Array
 - Graph
 - Greedy Algorithm
+- Trie
 
 ###  Structure
 Solutions are organized by topic in separate folders. Each file is well-commented for clarity.
