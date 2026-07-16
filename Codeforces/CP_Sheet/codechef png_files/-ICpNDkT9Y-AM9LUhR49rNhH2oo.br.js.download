@@ -1,0 +1,1 @@
+var HamburgerResultsRemovedLink;(function(){function t(){var n=_ge("results_removed_link");n&&(Lib.CssClass.add(n.parentElement,"b_hide"),sj_evt.bind("hpqsOpened",i,!0))}function i(){if(!n){n=!0;var i=_ge("results_removed_link"),t=_ge("b_hb_results_removed");i&&t&&(t.innerHTML="",t.appendChild(i))}}var n=!1;t()})(HamburgerResultsRemovedLink||(HamburgerResultsRemovedLink={}))

@@ -1,0 +1,1 @@
+(function(){function r(r){t&&r[1]&&(typeof mmSetCW!==n&&mmSetCW(),t.show(r[1],!0,i));sj_evt.fire("clearHover")}var n="undefined",t=typeof IFrameOverlay!==n?IFrameOverlay:null,i="&mode=overlay";sj_evt.bind("IFrame.Navigate",r,!0)})()

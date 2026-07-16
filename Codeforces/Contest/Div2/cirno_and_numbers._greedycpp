@@ -1,0 +1,191 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+using ll = long long;
+
+int main(){
+
+    int t;
+    cin >> t;
+
+    while(t--){
+
+        ll a;
+        int n;
+
+        cin >> a >> n;
+
+        vector<int> d(n);
+
+        for(int i=0;i<n;i++){
+            cin >> d[i];
+        }
+
+        string s = to_string(a);
+
+        ll ans = LLONG_MAX;
+
+        string bigger = s;
+        bool done = false;
+
+        for(int i=0;i<s.size();i++){
+
+            int cur = s[i]-'0';
+
+            bool found = false;
+
+            for(int j=0;j<n;j++){
+
+                if(d[j] >= cur){
+
+                    bigger[i] = d[j] + '0';
+
+                    if(d[j] > cur){
+
+                        for(int k=i+1;k<s.size();k++){
+                            bigger[k] = d[0] + '0';
+                        }
+
+                        found = true;
+                        done = true;
+                        break;
+                    }
+
+                    found = true;
+                    break;
+                }
+            }
+
+            if(done) break;
+
+            if(!found){
+
+                int idx = i-1;
+
+                while(idx>=0){
+
+                    bool ok = false;
+
+                    for(int j=0;j<n;j++){
+
+                        if(d[j] > bigger[idx]-'0'){
+
+                            bigger[idx] = d[j] + '0';
+
+                            for(int k=idx+1;k<s.size();k++){
+                                bigger[k] = d[0] + '0';
+                            }
+
+                            ok = true;
+                            done = true;
+                            break;
+                        }
+                    }
+
+                    if(ok) break;
+
+                    idx--;
+                }
+
+                if(idx<0){
+
+                    bigger = string(s.size()+1 , d[0]+'0');
+
+                    if(d[0]==0){
+                        bigger[0] = d[1]+'0';
+                    }
+                }
+
+                break;
+            }
+        }
+
+        ll num1 = stoll(bigger);
+        ans = min(ans , abs(a-num1));
+
+        string smaller = s;
+        done = false;
+
+        for(int i=0;i<s.size();i++){
+
+            int cur = s[i]-'0';
+
+            bool found = false;
+
+            for(int j=n-1;j>=0;j--){
+
+                if(d[j] <= cur){
+
+                    smaller[i] = d[j] + '0';
+
+                    if(d[j] < cur){
+
+                        for(int k=i+1;k<s.size();k++){
+                            smaller[k] = d[n-1] + '0';
+                        }
+
+                        found = true;
+                        done = true;
+                        break;
+                    }
+
+                    found = true;
+                    break;
+                }
+            }
+
+            if(done) break;
+
+            if(!found){
+
+                int idx = i-1;
+
+                while(idx>=0){
+
+                    bool ok = false;
+
+                    for(int j=n-1;j>=0;j--){
+
+                        if(d[j] < smaller[idx]-'0'){
+
+                            smaller[idx] = d[j] + '0';
+
+                            for(int k=idx+1;k<s.size();k++){
+                                smaller[k] = d[n-1] + '0';
+                            }
+
+                            ok = true;
+                            done = true;
+                            break;
+                        }
+                    }
+
+                    if(ok) break;
+
+                    idx--;
+                }
+
+                if(idx<0){
+
+                    if(d[0]==0 && s.size()==1){
+                        smaller = "0";
+                    }
+                    else{
+                        smaller = string(s.size()-1 , d[n-1]+'0');
+                    }
+                }
+
+                break;
+            }
+        }
+
+        if(smaller.size()>0){
+
+            ll num2 = stoll(smaller);
+
+            ans = min(ans , abs(a-num2));
+        }
+
+        cout << ans << endl;
+    }
+}

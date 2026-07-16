@@ -1,0 +1,1 @@
+(function(){var n=_d.querySelector("#b_header .b_scopebar>ul #b-scopeListItem-web");n===null||n===void 0?void 0:n.addEventListener("click",function(t){n&&Lib.CssClass.contains(n,"b_active")&&(sj_pd(t),sj_sp(t))},!0)})()
