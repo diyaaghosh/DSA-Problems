@@ -127,6 +127,33 @@ vector<int> print_longest_increasing_subsequence(vector<int>&nums){
     reverse(ans.begin(),ans.end());
     return ans;
 }
+int count_of_LIS(vector<int>&nums){
+    int n=nums.size();
+    vector<int>dp(n,1);
+    vector<int>cnt(n,1);
+    int maxi=INT_MIN;
+    for(int ind=0;ind<n;ind++){
+        for(int prev_ind=0;prev_ind<ind;prev_ind++){
+            if(nums[ind]>nums[prev_ind] && dp[ind]<(dp[prev_ind]+1)){
+                dp[ind]=1+dp[prev_ind];
+                cnt[ind]=cnt[prev_ind];
+                
+            }
+            else if(nums[ind]>nums[prev_ind] && dp[ind]==(dp[prev_ind]+1)){
+                
+                cnt[ind]+=cnt[prev_ind];
+            }
+            maxi=max(maxi,dp[ind]);
+        }
+    }
+  int ans=0;
+  for(int i=0;i<n;i++){
+    if(dp[i]==maxi){
+        ans+=cnt[i];
+    }
+  }
+  return ans==0?1:ans;
+}
 int main(){
     int n;
     cout<<"Enter dimension : ";
@@ -151,4 +178,5 @@ int main(){
     cout<<ans[i]<<" ";
    }
    cout<<endl;
+cout<<"Number of LIS : "<<count_of_LIS(nums)<<endl;
 }
